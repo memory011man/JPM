@@ -46,7 +46,7 @@ Use the `assets/` folder for all marks and poster images:
 
 ---
 
-## ▭ Principles (copy this into project READMEs)
+## ▭ Principles
 
 * Direct. Nothing extra.
 * Design is function.
