@@ -1,0 +1,108 @@
+PortScope 🔍
+An intelligent port scanner that not only identifies open ports but provides contextual information about services and potential security implications.
+Show Image
+Show Image
+🎯 Features
+
+Fast Concurrent Scanning: Uses multi-threading to scan ports efficiently
+Service Detection: Identifies common services running on open ports
+Security Context: Provides security notes for discovered services
+Risk Assessment: Calculates a risk score based on open ports
+Flexible Port Selection: Scan specific ports, ranges, or all 65535 ports
+Beautiful Output: Color-coded results for easy interpretation
+
+📸 Screenshot
+╔═══════════════════════════════════════════════════════════╗
+║                      PortScope v1.0                       ║
+║              Intelligent Port Scanner Tool                ║
+╚═══════════════════════════════════════════════════════════╝
+
+[*] Target: scanme.nmap.org (45.33.32.156)
+[*] Scanning 45.33.32.156...
+[*] Scanning 32 ports with 100 threads
+
+[+] Port    22 OPEN  | SSH             | Secure shell - good if properly configured
+[+] Port    80 OPEN  | HTTP            | Web server - unencrypted traffic
+[+] Port   443 OPEN  | HTTPS           | Secure web server - good!
+
+============================================================
+Scan Summary for 45.33.32.156
+============================================================
+
+Risk Assessment: LOW (Score: 7)
+Open Ports: 22, 80, 443
+🚀 Installation
+Prerequisites
+
+Python 3.7 or higher
+No external dependencies (uses only standard library!)
+
+Setup
+bash# Clone the repository
+git clone https://github.com/yourusername/portscope.git
+cd portscope
+
+# Make the script executable (Linux/Mac)
+chmod +x portscope.py
+
+# Run directly
+python3 portscope.py <target>
+💻 Usage
+Basic Examples
+bash# Scan common ports on a target
+python3 portscope.py 192.168.1.1
+
+# Scan specific ports
+python3 portscope.py example.com -p 22,80,443,8080
+
+# Scan a range of ports
+python3 portscope.py 10.0.0.1 -p 1-1000
+
+# Scan ALL ports (takes a while!)
+python3 portscope.py scanme.nmap.org --all
+
+# Use more threads for faster scanning
+python3 portscope.py 192.168.1.1 -t 200
+Command-Line Options
+positional arguments:
+  target                Target IP address or hostname
+
+options:
+  -h, --help            Show help message
+  -p PORTS, --ports PORTS
+                        Ports to scan (e.g., "1-100,443,8080")
+  --all                 Scan all 65535 ports
+  -t THREADS, --threads THREADS
+                        Number of concurrent threads (default: 100)
+🎓 What I Learned
+Building this tool taught me:
+
+Network Programming: Understanding TCP/IP sockets and connection states
+Concurrent Programming: Using ThreadPoolExecutor for parallel operations
+Security Basics: Recognizing dangerous services and misconfigurations
+Code Quality: Writing clean, documented, production-ready code
+
+🔒 Legal & Ethical Use
+⚠️ IMPORTANT: Only scan systems you own or have explicit permission to test.
+
+Unauthorized port scanning may be illegal in your jurisdiction
+This tool is for educational purposes and authorized security testing only
+Always obtain written permission before scanning any network
+Use responsibly and ethically
+
+🛠️ Technical Details
+How It Works
+
+Target Resolution: Converts hostnames to IP addresses using DNS
+Port Scanning: Attempts TCP connections to specified ports
+Service Detection: Matches ports to known services and provides context
+Risk Analysis: Evaluates security posture based on open ports
+Reporting: Generates a comprehensive summary with recommendations
+
+Key Components
+
+scan_port(): Tests individual ports using socket connections
+ThreadPoolExecutor: Manages concurrent scanning threads
+COMMON_PORTS: Database mapping ports to services and security notes
+calculate_risk_score(): Simple scoring algorithm for security assessment
+
